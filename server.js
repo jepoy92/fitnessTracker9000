@@ -1,8 +1,15 @@
-const { Mongoose } = require("mongoose");
-
 const express = require("express");
-const logger = require("morgan");
 const mongoose = require("mongoose");
+const path = require("path");
+const dotenv = require("dotenv").config();
+const { URI } = process.env;
+
+const MongoClient = require('mongodb').MongoClient;
+const client = new MongoClient(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connection.on('connected', () => {
+  console.log("Mongoose is connected!");
+})
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -10,64 +17,73 @@ const db = require("./models");
 
 const app = express();
 
-app.use(logger("dev"));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populatedb", { useNewUrlParser: true });
 
-db.User.create({ name: "Ernest Hemingway" })
-  .then(dbUser => {
-    console.log(dbUser);
+
+app.get("/api/workouts", (req, res) => {
+  db.Workout.find({})
+    .populate("exercises")
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+app.post("/api/workouts", (req, res) => {
+  db.Workout.create({ day: new Date() })
+  .then(dbWorkout => {
+    res.json(dbWorkout);
   })
-  .catch(({ message }) => {
+  .catch(({message}) => {
     console.log(message);
   });
+});
 
-app.get("/notes", (req, res) => {
-  db.Note.find({})
-    .then(dbNote => {
-      res.json(dbNote);
+app.put("/api/workouts/:id", (req, res) => {
+  const newObjId = mongoose.Types.ObjectId(req.params.id);
+  db.Exercise.create(req.body).then(exerciseData => {
+    db.Workout.updateOne({_id:newObjId}, {$push: {exercises: exerciseData._id}}).then(data=>{
+      res.json(data);
+    }).catch(err => {
+      console.log(err);
+      res.json(err);
+    });
+  })
+  })
+
+  app.get("/api/workouts/range", (req, res) => {
+    db.Workout.find({})
+    .populate("exercises")
+    .then(dbWorkout => {
+      res.json(dbWorkout);
     })
     .catch(err => {
       res.json(err);
     });
+  })
+
+
+
+app.get("/", (req, res) => {
+  res.send(200);
 });
 
-app.get("/user", (req, res) => {
-  db.User.find({})
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
+app.get("/exercise", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/exercise.html"));
+})
 
-app.post("/submit", ({ body }, res) => {
-  db.Note.create(body)
-    .then(({ _id }) => db.User.findOneAndUpdate({}, { $push: { notes: _id } }, { new: true }))
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
+app.get("/stats", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/stats.html"));
+})
 
-app.get("/populateduser", (req, res) => {
-  db.User.find({})
-    .populate("notes")
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
+
+mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
