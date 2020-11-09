@@ -1,19 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const db = require("./models");
+// const PORT = process.env.PORT || 3000;
 const dotenv = require("dotenv").config();
 const { URI } = process.env;
 
-const MongoClient = require('mongodb').MongoClient;
-const client = new MongoClient(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connection.on('connected', () => {
-  console.log("Mongoose is connected!");
-})
-
-
 const PORT = process.env.PORT || 3000;
-
-const db = require("./models");
 
 const app = express();
 
@@ -22,7 +15,21 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+console.log("I'm working")
 
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/fitnesstracker9000',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  );
+
+mongoose.connection.on('connected', () => {
+  console.log("Mongoose is connected!");
+})
 
 app.get("/api/workouts", (req, res) => {
   db.Workout.find({})
