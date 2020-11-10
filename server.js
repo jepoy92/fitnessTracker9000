@@ -90,7 +90,7 @@ app.get("/stats", (req, res) => {
 })
 
 
-mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
