@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const db = require("./models");
-// const PORT = process.env.PORT || 3000;
 const dotenv = require("dotenv").config();
 const { URI } = process.env;
 
@@ -18,7 +17,7 @@ app.use(express.static("public"));
 console.log("I'm working")
 
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/fitnesstracker9000',
+    process.env.MONGODB_URI || 'mongodb://localhost/fitnessTrackerDB',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -66,7 +65,7 @@ app.put("/api/workouts/:id", (req, res) => {
 
   app.get("/api/workouts/range", (req, res) => {
     db.Workout.find({})
-    .populate("exercises")
+    .populate("exercise")
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
