@@ -2,8 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const db = require("./models");
-const dotenv = require("dotenv").config();
-const { URI } = process.env;
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,7 +15,7 @@ app.use(express.static("public"));
 console.log("I'm working")
 
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/fitnessTrackerDB',
+    process.env.MONGO_URI || 'mongodb://localhost/fitnessTrackerDB',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
