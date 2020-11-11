@@ -40,6 +40,7 @@ app.get("/api/workouts", (req, res) => {
 });
 
 app.post("/api/workouts", (req, res) => {
+console.log(req)
   db.Workout.create({ day: new Date() })
   .then(dbWorkout => {
     res.json(dbWorkout);
@@ -55,13 +56,13 @@ app.put("/api/workouts/:id", (req, res) => {
     db.Workout.updateOne({_id:newObjId}, {$push: {exercises: exerciseData._id}}).then(data=>{
       res.json(data);
     }).catch(err => {
-      console.log(err);
-      res.json(err);
+        console.log(err);
+        res.json(err);
     });
-  })
-  })
+})
+})
 
-  app.get("/api/workouts/range", (req, res) => {
+app.get("/api/workouts/range", (req, res) => {
     db.Workout.find({})
     .populate("exercise")
     .then(dbWorkout => {
