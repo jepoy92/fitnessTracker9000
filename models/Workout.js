@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Exercise } = require(".");
 
 const Schema = mongoose.Schema;
 
