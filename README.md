@@ -1,7 +1,5 @@
 # fitnessTracker9000
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-
 ## Description 
 
 A workout tracker made with JavaScript which uses MongoDB to store exercises logged by the user. This app allows the user to create workouts, add exercises, and view their activity in a dashboard that gives a visual aid of all of there fitness data.
