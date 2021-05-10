@@ -1,57 +1,79 @@
-# Unit 17 Nosql Homework: Workout Tracker
+# fitnessTracker9000
 
-For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-## User Story
+## Description 
 
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+A workout tracker made with JavaScript which uses MongoDB to store exercises logged by the user. This app allows the user to create workouts, add exercises, and view their activity in a dashboard that gives a visual aid of all of there fitness data.
 
-## Business Context
+## Table of Contents
 
-A consumer will reach their fitness goals more quickly when they track their workout progress.
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
 
-## Acceptance Criteria
+## Installation:
 
-When the user loads the page, they should be given the option to create a new workout or continue with their last workout.
+Download the app from the GitHub repository and run npm install and spin up MongoDB database to start logging your exercises!
 
-The user should be able to:
+## Usage:
 
-  * Add exercises to a previous workout plan.
+This code may be used according to the GNU General Public License
 
-  * Add new exercises to a new workout plan.
+## License
+  
+  
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-  * View the combined weight of multiple exercises on the `stats` page.
+  For more information on the license used, please click on the link below:
 
-To deploy an application with a MongoDB database to Heroku, you'll need to set up a MongoDB Atlas account and connect a database from there to your application. Be sure to use the following guides for support:
+- [License] (https://opensource.org/licenses/GPL-3.0)
 
-  * [Set Up MongoDB Atlas](../04-Important/MongoAtlas-Setup.md)
 
-  * [Deploy with Heroku and MongoDB Atlas](../04-Important/MongoAtlas-Deploy.md)
 
-## Commit Early and Often
+## Contributing
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for the following two reasons:
+## Thank you to my wonderful study group! Please follow their githubs down below!
 
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills.
+- [Zachary Bryan](https://github.com/zacharybryan)
+- [Tim Sanders](https://github.com/tbsanders5)
+- [Nick Konzen](https://github.com/NTKonzen)
+- [Kira Bismuth Lowrey](https://github.com/KILowrey)
+- [Nancy Lambert-Brown](https://github.com/n-lambert)
+- [Mando Estrada](https://github.com/Mando619)
+- [Talia Vazquez](https://github.com/taliavazquez)
+- [Perry Theobald](https://github.com/perrytjr)
+- [Jeneth Diestra](https://github.com/jen6one9)
+- [Matthew Rogers](https://github.com/Rogers-Development-Services)
+- [Clyde Baron Rapinan](https://github.com/clydebaron2000)
+- [Johnny Lieu](https://github.com/johnnylieu)
+- [Robert Graham](https://github.com/Robmgraham)
+- [Plover Brown](https://github.com/rebgrasshopper)
+- [Talia Vazquez](https://github.com/taliavazquez)
+- [Nancy Lambert-Brown](https://github.com/n-lambert)
+- [Zachary Bryan](https://github.com/zacharybryan)
+- [Perry Theobald](https://github.com/perrytjr)
+- [Tim Sanders](https://github.com/tbsanders5)
+- [Jeneth Diesta](https://github.com/jen6one9)
+- [Matthew Rogers](https://github.com/Rogers-Development-Services)
+- [Mando Estrada](https://github.com/Mando619)
+- [Clyde Baron Rapinan](https://github.com/clydebaron2000)
+- [Johnny Lieu](https://github.com/johnnylieu)
+- [Robert Graham](https://github.com/Robmgraham)
 
-2. Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
+## Tests 
 
-Follow these guidelines for committing:
+NONE
 
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
+## Questions
 
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
+  For questions concerning my apps, click on the link below for my github:
 
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
+  [Github Link] (https://github.com/jepoy92)
 
-* Test your application before you commit to ensure functionality at every step in the development process.
+  Or click the link below for my email:
 
-We want you to have well over 200 commits by graduation, so commit early and often!
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL to the deployed application
-
-* The URL to the GitHub repository
+  [Email] (jeffrey1choi@gmail.com)
